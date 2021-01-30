@@ -100,8 +100,9 @@ zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
 
 
 zinit ice lucid wait='1'
-zinit as"program" make'!' atclone'./direnv hook zsh > zhook.zsh' \
-    atpull'%atclone' pick"direnv" src"zhook.zsh" for \
+zinit from"gh-r" as"program" mv"direnv* -> direnv" \
+    atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
+    pick"direnv" src="zhook.zsh" for \
         direnv/direnv
 
 alias cc='cmake -H. -B.build -DCMAKE_TOOLCHAIN_FILE=~/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_INSTALL_PREFIX=prefix -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug'
