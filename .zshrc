@@ -39,12 +39,12 @@ source "$HOME/.zinit/bin/zinit.zsh"
 zinit for \
 		OMZL::functions.zsh
 
-zinit wait lucid as=program pick="$ZPFX/bin/(fzf|fzf-tmux)" \
-    atclone="cp shell/completion.zsh _fzf_completion; \
-      cp bin/(fzf|fzf-tmux) $ZPFX/bin" \
-    make="!PREFIX=$ZPFX install" \
-    multisrc'shell/{key-bindings,completion}.zsh' for \
-    junegunn/fzf
+#zinit wait lucid as=program pick="$ZPFX/bin/(fzf|fzf-tmux)" \
+    #atclone="cp shell/completion.zsh _fzf_completion; \
+      #cp bin/(fzf|fzf-tmux) $ZPFX/bin" \
+    #make="!PREFIX=$ZPFX install" \
+    #multisrc'shell/{key-bindings,completion}.zsh' for \
+    #junegunn/fzf
 
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
@@ -99,11 +99,11 @@ zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
     zsh-users/zsh-completions
 
 
-zinit ice lucid wait='1'
-zinit from"gh-r" as"program" mv"direnv* -> direnv" \
-    atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
-    pick"direnv" src="zhook.zsh" for \
-        direnv/direnv
+#zinit ice lucid wait='1'
+#zinit from"gh-r" as"program" mv"direnv* -> direnv" \
+    #atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
+    #pick"direnv" src="zhook.zsh" for \
+        #direnv/direnv
 
 alias cc='cmake -H. -B.build -DCMAKE_TOOLCHAIN_FILE=~/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_INSTALL_PREFIX=prefix -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug'
 alias ccd='cmake -H. -B.build -DCMAKE_TOOLCHAIN_FILE=~/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_INSTALL_PREFIX=prefix -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Release'
