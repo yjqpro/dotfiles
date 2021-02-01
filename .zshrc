@@ -86,7 +86,7 @@ zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
     zsh-users/zsh-completions
 
 
-zinit ice lucid wait
+zinit ice lucid wait='1'
 zinit as"program" make'!' atclone'./direnv hook zsh > zhook.zsh' \
 	atpull'%atclone' pick"direnv" src"zhook.zsh" for \
 		direnv/direnv
