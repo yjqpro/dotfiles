@@ -3,8 +3,6 @@ if type nvim > /dev/null 2>&1; then
     alias vi='nvim'
 fi
 alias mvim="/Applications/MacVim.app/Contents/bin/mvim"
-#alias ll="exa -l"
-#alias ls="exa"
 
 bindkey -e
 
@@ -37,14 +35,15 @@ source "$HOME/.zinit/bin/zinit.zsh"
 #zplugin pack for fzf
 
 zinit for \
+		OMZL::directories.zsh \
 		OMZL::functions.zsh
 
-#zinit wait lucid as=program pick="$ZPFX/bin/(fzf|fzf-tmux)" \
-    #atclone="cp shell/completion.zsh _fzf_completion; \
-      #cp bin/(fzf|fzf-tmux) $ZPFX/bin" \
-    #make="!PREFIX=$ZPFX install" \
-    #multisrc'shell/{key-bindings,completion}.zsh' for \
-    #junegunn/fzf
+zinit wait lucid as=program pick="$ZPFX/bin/(fzf|fzf-tmux)" \
+    atclone="cp shell/completion.zsh _fzf_completion; \
+      cp bin/(fzf|fzf-tmux) $ZPFX/bin" \
+    make="!PREFIX=$ZPFX install" \
+    multisrc'shell/{key-bindings,completion}.zsh' for \
+    junegunn/fzf
 
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
@@ -77,16 +76,6 @@ zinit ice lucid wait'1' atinit"local ZSH_PYENV_LAZY_VIRTUALENV=true" \
 zinit light davidparsson/zsh-pyenv-lazy
 # }}}
 
-# zinit ice atclone'PYENV_ROOT="$PWD" ./libexec/pyenv init - > zpyenv.zsh' \
-#     atinit'export PYENV_ROOT="$PWD"' atpull"%atclone" \
-#     as'command' pick'bin/pyenv' src"zpyenv.zsh" nocompile'!'
-# zinit light pyenv/pyenv
-# 
-# zinit ice cloneonly nocompile nocompletions \
-#     atclone"mkdir -p $PYENV_ROOT/plugins;
-#     ln -sf ${ZINIT[PLUGINS_DIR]}/pyenv---pyenv-virtualenv $PYENV_ROOT/plugins/pyenv-virtualenv"
-# zinit light pyenv/pyenv-virtualenv
-
 
 zinit ice wait lucid atload'_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
@@ -99,14 +88,22 @@ zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
     zsh-users/zsh-completions
 
 
-#zinit ice lucid wait='1'
-#zinit from"gh-r" as"program" mv"direnv* -> direnv" \
-    #atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
-    #pick"direnv" src="zhook.zsh" for \
-        #direnv/direnv
+zinit ice lucid wait='1'
+zinit as"program" make'!' atclone'./direnv hook zsh > zhook.zsh' \
+	atpull'%atclone' pick"direnv" src"zhook.zsh" for \
+		direnv/direnv
 
-alias cc='cmake -H. -B.build -DCMAKE_TOOLCHAIN_FILE=~/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_INSTALL_PREFIX=prefix -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug'
-alias ccd='cmake -H. -B.build -DCMAKE_TOOLCHAIN_FILE=~/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_INSTALL_PREFIX=prefix -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Release'
+VCPKG_ROOT=$HOME/vcpkg
+
+alias cc='cmake -H. -B.build -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/buildsystems/vcpkg.cmake -DCMAKE_INSTALL_PREFIX=prefix -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug'
+alias ccd='cmake -H. -B.build -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake -DCMAKE_INSTALL_PREFIX=prefix -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Release'
 alias cb='cmake --build .build'
 alias cbi='cmake --build .build --target install'
+alias r='ranger'
+alias rv='vagrant destroy -f && vagrant up'
 
+# List directory contents
+alias lsa='exa -lah'
+alias l='exa -lah'
+alias ll='exa -lh'
+alias la='exa -lAh'
