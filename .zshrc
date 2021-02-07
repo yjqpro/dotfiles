@@ -3,6 +3,7 @@ if type nvim > /dev/null 2>&1; then
     alias vi='nvim'
 fi
 alias mvim="/Applications/MacVim.app/Contents/bin/mvim"
+alias v='nvim'
 
 bindkey -e
 
