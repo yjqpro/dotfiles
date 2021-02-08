@@ -70,7 +70,7 @@ zinit snippet OMZ::plugins/common-aliases/common-aliases.plugin.zsh
 zinit snippet OMZ::plugins/virtualenv/virtualenv.plugin.zsh
 
 # Python {{{
-zinit ice lucid wait atinit"local ZSH_PYENV_LAZY_VIRTUALENV=true" \
+zinit ice lucid wait'1' atinit"local ZSH_PYENV_LAZY_VIRTUALENV=true" \
   atload"pyenv virtualenvwrapper_lazy"
 zinit light davidparsson/zsh-pyenv-lazy
 # }}}
@@ -86,8 +86,7 @@ zinit light ogham/exa
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
     zsh-users/zsh-completions
 
-
-zinit from"gh-r" as"program" mv"direnv* -> direnv" \
+zinit ice lucid wait'1' from"gh-r" as"program" mv"direnv* -> direnv" \
     atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
     pick"direnv" src="zhook.zsh" for \
         direnv/direnv
