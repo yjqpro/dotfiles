@@ -105,3 +105,5 @@ alias lsa='exa -lah'
 alias l='exa -lah'
 alias ll='exa -lh'
 alias la='exa -lAh'
+alias dotfiles='git --git-dir ~/.dotfiles/.git --work-tree=$HOME'
+
