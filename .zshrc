@@ -70,6 +70,21 @@ zinit snippet OMZ::plugins/common-aliases/common-aliases.plugin.zsh
 zinit snippet OMZ::plugins/virtualenv/virtualenv.plugin.zsh
 
 # Python {{{
+zinit ice atclone'PYENV_ROOT="$PWD" ./libexec/pyenv init - > zpyenv.zsh' \
+    atinit'export PYENV_ROOT="$PWD"' atpull"%atclone" \
+    as'command' pick'bin/pyenv' src"zpyenv.zsh" nocompile'!'
+zinit light pyenv/pyenv
+
+zinit ice cloneonly nocompile nocompletions \
+    atclone"mkdir -p $PYENV_ROOT/plugins;
+    ln -sf ${ZINIT[PLUGINS_DIR]}/pyenv---pyenv-virtualenv $PYENV_ROOT/plugins/pyenv-virtualenv"
+zinit light pyenv/pyenv-virtualenv
+
+zinit ice cloneonly nocompile nocompletions \
+    atclone"mkdir -p $PYENV_ROOT/plugins;
+    ln -sf ${ZINIT[PLUGINS_DIR]}/pyenv---pyenv-virtualenvwrapper $PYENV_ROOT/plugins/pyenv-virtualenvwrapper"
+zinit light pyenv/pyenv-virtualenvwrapper
+
 zinit ice lucid wait'1' atinit"local ZSH_PYENV_LAZY_VIRTUALENV=true" \
   atload"pyenv virtualenvwrapper_lazy"
 zinit light davidparsson/zsh-pyenv-lazy
@@ -99,6 +114,9 @@ alias cb='cmake --build .build'
 alias cbi='cmake --build .build --target install'
 alias r='ranger'
 alias rv='vagrant destroy -f && vagrant up'
+
+
+# 测试
 
 # List directory contents
 alias lsa='exa -lah'
