@@ -95,7 +95,7 @@ zinit ice wait lucid atload'_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
 
 # ogham/exa, replacement for ls
-zinit ice wait lucid from"gh-r" as"program" mv"exa* -> exa"
+zinit ice wait lucid from"gh-r" as"program" mv"bin/exa* -> exa"
 zinit light ogham/exa
 
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
