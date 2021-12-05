@@ -116,14 +116,10 @@ alias r='ranger'
 alias rv='vagrant destroy -f && vagrant up'
 
 
-# 测试
-
 # List directory contents
 alias lsa='exa -lah'
 alias l='exa -lah'
 alias ll='exa -lh'
 alias la='exa -lAh'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
-
-
 alias luamake=/Users/yjqpro/github/lua-language-server/3rd/luamake/luamake
