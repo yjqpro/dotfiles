@@ -98,6 +98,9 @@ zinit light zsh-users/zsh-autosuggestions
 zinit ice wait lucid from"gh-r" as"program" mv"bin/exa* -> exa"
 zinit light ogham/exa
 
+zinit ice wait lucid from"gh-r" as"program" mv"jcli* -> jcli"
+zinit light jenkins-zh/jenkins-cli
+
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
     zsh-users/zsh-completions
 
@@ -123,3 +126,14 @@ alias ll='exa -lh'
 alias la='exa -lAh'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias luamake=/Users/yjqpro/github/lua-language-server/3rd/luamake/luamake
+alias lg=lazygit
+export PATH="$HOME/Library/Python/3.8/bin:/opt/homebrew/bin:$PATH"
+export PATH="/usr/local/opt/binutils/bin:$PATH"
+export PATH="/usr/local/opt/binutils/bin:$PATH"
+
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# Created by `pipx` on 2022-02-22 05:17:31
+export PATH="$PATH:/Users/yjqpro/.local/bin"
+export PATH="/usr/local/opt/node@16/bin:$PATH"
+
